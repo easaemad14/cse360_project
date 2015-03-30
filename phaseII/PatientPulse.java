@@ -21,7 +21,6 @@ import javax.swing.JTable;
 public class PatientPulse {
 
 	private JFrame frame;
-	//private JPanel LogIn, PatientHome, RSpanel;
 	private JLabel nameLabel, passwordLabel, num_label, PH_label;
 	private JTextArea username;
 	private JPasswordField passwordField;
@@ -31,7 +30,8 @@ public class PatientPulse {
 	static int num = 5;
 	static String name, password, comm;
 	private JTable SummaryTable;
-	private JTable msgTable;
+	private JTable msgTable, RosterTable, DocMsgTable;
+	
 	
 
 	/**
@@ -71,6 +71,10 @@ public class PatientPulse {
 		LogIn.setLayout(null);
 		LogIn.setVisible(true);
 		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Patient
+		//---------------------------------------------------------------------------------------------------------------------------
+		
 		final JPanel PatientHome = new JPanel();
 		PatientHome.setBackground(Color.GRAY);
 		frame.getContentPane().add(PatientHome, "name_288191811961256");
@@ -106,6 +110,29 @@ public class PatientPulse {
 		frame.getContentPane().add(Emergency, "name_361695070446785");
 		Emergency.setLayout(null);
 		Emergency.setVisible(false);
+		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Doctor
+		//---------------------------------------------------------------------------------------------------------------------------
+		
+		final JPanel DoctorHome = new JPanel();
+		DoctorHome.setBackground(Color.GRAY);
+		frame.getContentPane().add(DoctorHome, "name_388462474512077");
+		DoctorHome.setLayout(null);
+		DoctorHome.setVisible(false);
+		
+		final JPanel PatientReport = new JPanel();
+		PatientReport.setBackground(Color.GRAY);
+		frame.getContentPane().add(PatientReport, "name_391281299215622");
+		PatientReport.setLayout(null);
+		PatientReport.setVisible(false);
+		
+		final JPanel DocMsgHistory = new JPanel();
+		DocMsgHistory.setBackground(Color.GRAY);
+		frame.getContentPane().add(DocMsgHistory, "name_394677836518050");
+		DocMsgHistory.setLayout(null);
+		DocMsgHistory.setLayout(null);
+		DocMsgHistory.setVisible(false);
 		
 		//---------------------------------------------------------------------------------------------------------------------------
 		// Log In
@@ -191,12 +218,19 @@ public class PatientPulse {
 				password = passwordLabel.getText();
 				
 				LogIn.setVisible(false);
+				// If user is a patient
 				PatientHome.setVisible(true);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
+				// If user is a doctor
+				//DoctorHome.setVisible(true);
+				//PatientHome.setVisible(false);
 			}
 		});
 		LogButton.setBackground(new Color(102, 0, 255));
@@ -204,7 +238,7 @@ public class PatientPulse {
 		LogIn.add(LogButton);
 		
 		//---------------------------------------------------------------------------------------------------------------------------
-		// Patient Home
+		// Patient's Home
 		
 		JPanel PHpanel = new JPanel();
 		PHpanel.setBackground(new Color(102, 0, 255));
@@ -236,6 +270,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		newRepButton.setForeground(new Color(102, 0, 255));
@@ -260,6 +297,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(true);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		historyButton.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -284,6 +324,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(true);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		EmergencyButton.setForeground(new Color(102, 0, 255));
@@ -308,6 +351,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		
@@ -411,6 +457,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		QButton.setBackground(new Color(102, 0, 255));
@@ -492,6 +541,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		QButton.setBackground(new Color(102, 0, 255));
@@ -513,6 +565,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(true);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		NextButton.setBackground(new Color(102, 0, 255));
@@ -607,6 +662,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		BackButton.setBackground(new Color(102, 0, 255));
@@ -630,6 +688,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		SubmitButton.setBackground(new Color(102, 0, 255));
@@ -659,7 +720,7 @@ public class PatientPulse {
 		msgListPanel.setLayout(null);
 		
 		JPanel AuthPanel = new JPanel();
-		AuthPanel.setBounds(10, 11, 120, 29);
+		AuthPanel.setBounds(10, 11, 128, 29);
 		msgListPanel.add(AuthPanel);
 		AuthPanel.setLayout(null);
 		
@@ -667,7 +728,7 @@ public class PatientPulse {
 		Author_label.setForeground(new Color(102, 0, 255));
 		Author_label.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Author_label.setHorizontalAlignment(SwingConstants.CENTER);
-		Author_label.setBounds(0, 0, 120, 29);
+		Author_label.setBounds(0, 0, 128, 29);
 		AuthPanel.add(Author_label);
 		
 		JPanel DPanel = new JPanel();
@@ -687,7 +748,7 @@ public class PatientPulse {
 		msgListPanel.add(viewPanel);
 		viewPanel.setLayout(null);
 		
-		JLabel viewLabel = new JLabel("<html><center>Click on a PulseReport or a Doctor<br><center>Message to continue.</html>");
+		JLabel viewLabel = new JLabel("<html>Click on a PulseReport or a Doctor<br><center>Message to continue.</html>");
 		viewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		viewLabel.setForeground(new Color(102, 0, 255));
 		viewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -719,6 +780,9 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		QButton.setBackground(new Color(102, 0, 255));
@@ -755,12 +819,12 @@ public class PatientPulse {
 		Emergency.add(Emerpanel);
 		Emerpanel.setLayout(null);
 		
-		header_label = new JLabel("EMERGENCY");
-		header_label.setForeground(new Color(255, 255, 255));
-		header_label.setFont(new Font("Tahoma", Font.BOLD, 16));
-		header_label.setHorizontalAlignment(SwingConstants.CENTER);
-		header_label.setBounds(10, 11, 277, 30);
-		Emerpanel.add(header_label);
+		JLabel Elabel = new JLabel("EMERGENCY");
+		Elabel.setForeground(new Color(255, 255, 255));
+		Elabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		Elabel.setHorizontalAlignment(SwingConstants.CENTER);
+		Elabel.setBounds(10, 11, 277, 30);
+		Emerpanel.add(Elabel);
 		
 		JPanel call911 = new JPanel();
 		call911.setBackground(new Color(102, 0, 255));
@@ -812,15 +876,225 @@ public class PatientPulse {
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		QButton.setBackground(new Color(102, 0, 255));
 		QButton.setBounds(47, 373, 89, 23);
 		Emergency.add(QButton);
+
+		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Doctor's Home
+		
+		JPanel DHpanel = new JPanel();
+		DHpanel.setBackground(new Color(102, 0, 255));
+		DHpanel.setBounds(10, 11, 297, 52);
+		DoctorHome.add(DHpanel);
+		DHpanel.setLayout(null);
+		
+		JLabel DH_label = new JLabel("Patient Roster");
+		DH_label.setForeground(new Color(255, 255, 255));
+		DH_label.setFont(new Font("Tahoma", Font.BOLD, 16));
+		DH_label.setHorizontalAlignment(SwingConstants.CENTER);
+		DH_label.setBounds(10, 11, 277, 30);
+		DHpanel.add(DH_label);
+		
+		JPanel RosterPanel = new JPanel();
+		RosterPanel.setBackground(new Color(102, 0, 255));
+		RosterPanel.setBounds(43, 74, 233, 300);
+		DoctorHome.add(RosterPanel);
+		RosterPanel.setLayout(null);
+		
+		JPanel PNamePanel = new JPanel();
+		PNamePanel.setBounds(10, 11, 126, 29);
+		RosterPanel.add(PNamePanel);
+		PNamePanel.setLayout(null);
+		
+		JLabel PName_label = new JLabel("Name");
+		PName_label.setForeground(new Color(102, 0, 255));
+		PName_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		PName_label.setHorizontalAlignment(SwingConstants.CENTER);
+		PName_label.setBounds(0, 0, 126, 29);
+		PNamePanel.add(PName_label);
+		
+		JPanel UrgencyPanel = new JPanel();
+		UrgencyPanel.setBounds(140, 11, 83, 29);
+		RosterPanel.add(UrgencyPanel);
+		UrgencyPanel.setLayout(null);
+		
+		JLabel Urg_label = new JLabel("Urgency");
+		Urg_label.setForeground(new Color(102, 0, 255));
+		Urg_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Urg_label.setHorizontalAlignment(SwingConstants.CENTER);
+		Urg_label.setBounds(0, 0, 83, 29);
+		UrgencyPanel.add(Urg_label);
+		
+		JPanel InsPanel = new JPanel();
+		InsPanel.setBounds(10, 51, 213, 35);
+		RosterPanel.add(InsPanel);
+		InsPanel.setLayout(null);
+		
+		JLabel InsLabel = new JLabel("<html>Click on a patient name to see their<br><center>details and messages.</html>");
+		InsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		InsLabel.setForeground(new Color(102, 0, 255));
+		InsLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		InsLabel.setBounds(0, 0, 213, 35);
+		InsPanel.add(InsLabel);
+		
+		JScrollPane RosterScroll = new JScrollPane();
+		RosterScroll.setBounds(10, 97, 213, 192);
+		RosterPanel.add(RosterScroll);
+		
+		// Populate with data
+		
+		RosterTable = new JTable();
+		RosterScroll.setViewportView(RosterTable);
+		
+		QButton = new JButton("QUIT");
+		QButton.setForeground(new Color(255, 255, 255));
+		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		QButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				username.setText("");
+				passwordField.setText("");
+				
+				LogIn.setVisible(true);
+				PatientHome.setVisible(false);
+				RateSymptoms.setVisible(false);
+				PatientComments.setVisible(false);
+				PatientSummary.setVisible(false);
+				MsgHistory.setVisible(false);
+				Emergency.setVisible(false);
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
+			}
+		});
+		QButton.setBackground(new Color(102, 0, 255));
+		QButton.setBounds(45, 393, 89, 23);
+		DoctorHome.add(QButton);
+		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Patient Report
+		
+		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Doctor's Message History
+		
+		JPanel DMHpanel = new JPanel();
+		DMHpanel.setBackground(new Color(102, 0, 255));
+		DMHpanel.setBounds(10, 11, 297, 52);
+		DocMsgHistory.add(DMHpanel);
+		DMHpanel.setLayout(null);
+		
+		JLabel DMH_label = new JLabel("Message History");
+		DMH_label.setForeground(new Color(255, 255, 255));
+		DMH_label.setFont(new Font("Tahoma", Font.BOLD, 16));
+		DMH_label.setHorizontalAlignment(SwingConstants.CENTER);
+		DMH_label.setBounds(10, 11, 277, 30);
+		DMHpanel.add(DMH_label);
+		
+		JPanel DocMsgPanel = new JPanel();
+		DocMsgPanel.setBackground(new Color(102, 0, 255));
+		DocMsgPanel.setBounds(43, 74, 233, 300);
+		DocMsgHistory.add(DocMsgPanel);
+		DocMsgPanel.setLayout(null);
+		
+		JPanel DocAuthPanel = new JPanel();
+		DocAuthPanel.setBounds(10, 11, 128, 29);
+		DocMsgPanel.add(DocAuthPanel);
+		DocAuthPanel.setLayout(null);
+		
+		JLabel DocAuth_label = new JLabel("AUTHOR");
+		DocAuth_label.setForeground(new Color(102, 0, 255));
+		DocAuth_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		DocAuth_label.setHorizontalAlignment(SwingConstants.CENTER);
+		DocAuth_label.setBounds(0, 0, 128, 29);
+		DocAuthPanel.add(DocAuth_label);
+		
+		JPanel DocDatePanel = new JPanel();
+		DocDatePanel.setBounds(140, 11, 83, 29);
+		DocMsgPanel.add(DocDatePanel);
+		DocDatePanel.setLayout(null);
+		
+		JLabel DocD_label = new JLabel("DATE");
+		DocD_label.setForeground(new Color(102, 0, 255));
+		DocD_label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		DocD_label.setHorizontalAlignment(SwingConstants.CENTER);
+		DocD_label.setBounds(0, 0, 83, 29);
+		DocDatePanel.add(DocD_label);
+		
+		JPanel DocViewPanel = new JPanel();
+		DocViewPanel.setBounds(10, 51, 213, 35);
+		DocMsgPanel.add(DocViewPanel);
+		DocViewPanel.setLayout(null);
+		
+		JLabel DocVLabel = new JLabel("<html>Click on one of your PulseReport<br><center>Message to continue.</html>");
+		DocVLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		DocVLabel.setForeground(new Color(102, 0, 255));
+		DocVLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		DocVLabel.setBounds(0, 0, 213, 35);
+		DocViewPanel.add(DocVLabel);
+		
+		JScrollPane DocMsgScroll = new JScrollPane();
+		DocMsgScroll.setBounds(10, 97, 213, 192);
+		DocMsgPanel.add(DocMsgScroll);
+		
+		// Populate with data from data base!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		DocMsgTable = new JTable();
+		DocMsgScroll.setViewportView(DocMsgTable);
+		
+		QButton = new JButton("QUIT");
+		QButton.setForeground(new Color(255, 255, 255));
+		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		QButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				username.setText("");
+				passwordField.setText("");
+				
+				LogIn.setVisible(true);
+				PatientHome.setVisible(false);
+				RateSymptoms.setVisible(false);
+				PatientComments.setVisible(false);
+				PatientSummary.setVisible(false);
+				MsgHistory.setVisible(false);
+				Emergency.setVisible(false);
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
+			}
+		});
+		QButton.setBackground(new Color(102, 0, 255));
+		QButton.setBounds(45, 393, 89, 23);
+		DocMsgHistory.add(QButton);
+		
+		DLButton = new JButton("Download All");
+		DLButton.setForeground(new Color(255, 255, 255));
+		DLButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		DLButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Downloading..." );
+				/*
+				LogIn.setVisible(true);
+				PatientHome.setVisible(false);
+				RateSymptoms.setVisible(false);
+				PatientComments.setVisible(false);
+				PatientSummary.setVisible(false);
+				MsgHistory.setVisible(false);
+				Emergency.setVisible(false);
+				*/
+			}
+		});
+		DLButton.setBackground(new Color(102, 0, 255));
+		DLButton.setBounds(171, 393, 105, 23);
+		DocMsgHistory.add(DLButton);
 		
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setBounds(100, 100, 333, 466);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }
