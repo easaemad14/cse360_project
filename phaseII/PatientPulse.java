@@ -450,8 +450,8 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
@@ -534,8 +534,8 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
@@ -773,8 +773,8 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
@@ -795,15 +795,18 @@ public class PatientPulse {
 		DLButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Downloading..." );
-				/*
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
-				*/
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
+				
 			}
 		});
 		DLButton.setBackground(new Color(102, 0, 255));
@@ -962,14 +965,15 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
+				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
-				DoctorHome.setVisible(false);
+				
+				DoctorHome.setVisible(true);
 				DocMsgHistory.setVisible(false);
 			}
 		});
@@ -1057,14 +1061,15 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
+				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
-				DoctorHome.setVisible(false);
+				
+				DoctorHome.setVisible(true);
 				DocMsgHistory.setVisible(false);
 			}
 		});
@@ -1078,15 +1083,17 @@ public class PatientPulse {
 		DLButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Downloading..." );
-				/*
-				LogIn.setVisible(true);
+				
+				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				RateSymptoms.setVisible(false);
 				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
-				*/
+				
+				DoctorHome.setVisible(true);
+				DocMsgHistory.setVisible(false);
 			}
 		});
 		DLButton.setBackground(new Color(102, 0, 255));
