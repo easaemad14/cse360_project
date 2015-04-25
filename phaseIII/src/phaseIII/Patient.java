@@ -1,4 +1,5 @@
 package phaseIII;
+import java.util.ArrayList;
 
 public class Patient {
 	String userID,password,name,address,primaryPhoneNumber,secondaryPhoneNumber,hospital,ailment;
@@ -6,7 +7,24 @@ public class Patient {
 	//ArrayList<PatientReport>
 	int UrgencyLevel,NauseaLevel,DrowsinessLevel,AnxietyLevel,PainLevel,DepressionLevel;
 	
-	Patient(){
+	public Patient(){
+		//
+	}
+	
+	PatientReport gatherNewReport(){
+		//
 		
+	}
+	
+	String getCommentHistory(){
+		//
+	}
+	
+	int updateLatestSymptom(){
+		//
+	}
+	
+	void makeEmergencyCall(){
+		//
 	}
 }

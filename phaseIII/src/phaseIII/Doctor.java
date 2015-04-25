@@ -1,4 +1,5 @@
 package phaseIII;
+import java.util.ArrayList;
 
 public class Doctor {
 	String userID;
@@ -8,7 +9,7 @@ public class Doctor {
 	String personalPhoneNumber;
 	String hospital;
 	String department;
-	//ArrayList<patient> patientList
+	ArrayList<Patient> patientList = new ArrayList<Patient>();
 	
 	public Doctor(){
 		userID="0";
