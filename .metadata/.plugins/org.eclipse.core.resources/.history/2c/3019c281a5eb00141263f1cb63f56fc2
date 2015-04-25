@@ -856,7 +856,7 @@ public class PatientPulse {
 		
 		JPanel Asymptoms_panel = new JPanel();
 		Asymptoms_panel.setBounds(10, 11, 203, 40);
-		Amid_panel.add(Asymptoms_panel);
+		Amid_panel.add(Nsymptoms_panel);
 		Asymptoms_panel.setLayout(null);
 		
 		JLabel Asymptoms_label = new JLabel("Anxiety");
