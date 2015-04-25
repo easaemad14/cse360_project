@@ -52,6 +52,7 @@ public class PatientPulse {
 
 	/**
 	 * Create the application.
+	 * Hello comment
 	 */
 	public PatientPulse() {
 		initialize();
