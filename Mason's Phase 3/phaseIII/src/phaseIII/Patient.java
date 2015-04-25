@@ -10,7 +10,7 @@ public class Patient {
 	public Patient(){
 		//
 	}
-	
+	/*
 	PatientReport gatherNewReport(){
 		//
 		
@@ -23,6 +23,7 @@ public class Patient {
 	int updateLatestSymptom(){
 		//
 	}
+	*/
 	
 	void makeEmergencyCall(){
 		//
