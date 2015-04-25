@@ -9,7 +9,7 @@ public class Doctor {
 	String personalPhoneNumber;
 	String hospital;
 	String department;
-	//ArrayList<Patient> patientList = new ArrayList<Patient>();
+	ArrayList<Patient> patientList = new ArrayList<Patient>();
 	
 	public Doctor(){
 		userID="0";
@@ -18,11 +18,11 @@ public class Doctor {
 		personalPhoneNumber = "555-555-5555";
 		hospital = "Generic Hospital";
 		department = "Generic Department";
-		//patientList = NULL;
+		patientList = null;
 	}
 	
 	void printPatientReport(){
-		System.out.println("THIS IS THE REPORT");
+		//System.out.println("THIS IS THE REPORT");
 	}
 	
 	//getSymptom
