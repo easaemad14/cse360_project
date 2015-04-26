@@ -11,6 +11,8 @@ public class Doctor {
 	String department;
 	ArrayList<Patient> patientList = new ArrayList<Patient>();
 	
+	// test cmment
+	
 	public Doctor(){
 		userID="0";
 		password="password";
