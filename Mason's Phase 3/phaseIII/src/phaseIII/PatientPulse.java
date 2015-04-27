@@ -32,13 +32,12 @@ public class PatientPulse {
 	private JTextArea username, passwordField;
 	//private JPasswordField passwordField;
 	private JButton QButton, LogButton, NextButton, SubmitButton, BackButton, DLButton, minus, plus;
-	private JTextArea comments, commDisplay, DRcommDisplay;
+	private JTextArea comments, commDisplay, DRcommDisplay, DisplayRate, DrDisplayRate;
 	private JScrollPane ComScroll;
 	static int num = 5;
 	static int Pain, Depression, Nausea, Anxiety, Drowsiness;
-	static String name, password, comm, symptoms, SymptomsRate;
-	private JTable SummaryTable;
-	private JTable msgTable, RosterTable, DocMsgTable;
+	static String name, password, comm, symptoms, SymptomsRate, ratesum;
+	private JTable msgTable, RosterTable;
 	private ButtonGroup type = new ButtonGroup();
 	static int uType = 0;
 	
@@ -1233,6 +1232,10 @@ public class PatientPulse {
 				commDisplay.setText(comm);
 				DRcommDisplay.setText(comm);
 				
+				ratesum = "Pain\t\t" + Pain + "\n" + "Depression\t\t" + Depression + "\n" + "Nausea\t\t" + Nausea + "\n" + "Anxiety\t\t" + Anxiety + "\n" + "Drowsiness\t\t" + Drowsiness;
+				DisplayRate.setText(ratesum);
+				DrDisplayRate.setText(ratesum);
+				
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -1302,14 +1305,14 @@ public class PatientPulse {
 		SevLabel.setBounds(0, 0, 90, 27);
 		THSevPanel.add(SevLabel);
 		
-		JScrollPane SummScroll = new JScrollPane();
-		SummScroll.setBounds(10, 51, 215, 97);
-		SeverityPanel.add(SummScroll);
+		DisplayRate = new JTextArea();
+		DisplayRate.setBounds(10, 51, 215, 97);
+		DisplayRate.setEditable(false);
+		SeverityPanel.add(DisplayRate);
 		
-//POPULATE THIS TABLE WITH SYMPTOMS AND THEIR VALUES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
-		SummaryTable = new JTable();
-		SummScroll.setViewportView(SummaryTable);
+		JScrollPane RatescrollPane = new JScrollPane(DisplayRate);
+		RatescrollPane.setBounds(10, 49, 215, 99);
+		SeverityPanel.add(RatescrollPane);
 		
 		JPanel CommentsPanel = new JPanel();
 		CommentsPanel.setBackground(new Color(102, 0, 255));
@@ -1653,14 +1656,7 @@ public class PatientPulse {
 		InsLabel.setBounds(0, 0, 213, 35);
 		InsPanel.add(InsLabel);
 		
-		JScrollPane RosterScroll = new JScrollPane();
-		RosterScroll.setBounds(10, 97, 213, 192);
-		RosterPanel.add(RosterScroll);
-		
-// POPULATE THIS TABLE WITH LIST OF PATIENTS NAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
-		RosterTable = new JTable();
-		RosterScroll.setViewportView(RosterTable);
+		// Roster
 		
 		QButton = new JButton("QUIT");
 		QButton.setForeground(new Color(255, 255, 255));
@@ -1738,14 +1734,14 @@ public class PatientPulse {
 		DrSevLabel.setBounds(0, 0, 90, 27);
 		DrTHSevPanel.add(DrSevLabel);
 		
-		JScrollPane DrSummScroll = new JScrollPane();
-		DrSummScroll.setBounds(10, 51, 215, 97);
-		DrSeverityPanel.add(DrSummScroll);
+		DrDisplayRate = new JTextArea();
+		DrDisplayRate.setBounds(10, 51, 215, 97);
+		DrDisplayRate.setEditable(false);
+		SeverityPanel.add(DrDisplayRate);
 		
-//POPULATE THIS TABLE WITH SYMPTOMS AND THEIR VALUES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
-		SummaryTable = new JTable();
-		SummScroll.setViewportView(SummaryTable);
+		JScrollPane DrRatescrollPane = new JScrollPane(DrDisplayRate);
+		DrRatescrollPane.setBounds(10, 49, 215, 99);
+		DrSeverityPanel.add(DrRatescrollPane);
 		
 		JPanel DrCommentsPanel = new JPanel();
 		DrCommentsPanel.setBackground(new Color(102, 0, 255));
