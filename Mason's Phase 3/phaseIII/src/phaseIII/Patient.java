@@ -1,47 +1,65 @@
 package phaseIII;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Patient {
-	String userID,password,name,address,primaryPhoneNumber,secondaryPhoneNumber,hospital,ailment;
-	Doctor currentDoctor;
-	ArrayList<PatientReport> myReports = new ArrayList<PatientReport>();
-	int UrgencyLevel,NauseaLevel,DrowsinessLevel,AnxietyLevel,PainLevel,DepressionLevel;
+	String userID, password;
+	ArrayList<PatientReport> myReports = new ArrayList<PatientReport>(); // Holds all reports
+	int UrgencyLevel;
 	
+	// Default constructor
 	public Patient(){
 		userID="";
 		password="";
-		name="";
-		address="";
-		primaryPhoneNumber="";
-		secondaryPhoneNumber="";
-		hospital="";
-		ailment="";
-		currentDoctor=null;
-		myReports= null;
+		// myReports= null;
 		UrgencyLevel = 0;
-		NauseaLevel = 0;
-		DrowsinessLevel=0;
-		AnxietyLevel=0;
-		PainLevel=0;
-		DepressionLevel=0;
 	}
 	
-	PatientReport gatherNewReport(){
-		//
-		return;
+	// Constructor based on inputs
+	public Patient(String id, String pass){
+		userID = id;
+		password = pass;
+		// myReports= null;
+		UrgencyLevel = 0;
 	}
 	
-	String getCommentHistory(){
-		//
+	public static Comparator<Patient> urgNum = new Comparator<Patient>(){
+		public int compare(Patient p1, Patient p2){
+			int u1 = p1.getRecentUrgency();
+			int u2 = p2.getRecentUrgency();
+			
+			return u2 - u1;
+			
+		}
+	};
+	
+
+	public String getUserID() {
+		return userID;
 	}
 	
-	int updateLatestSymptom(){
-		//
+	public void setUserID(String id) {
+		userID = id;
+			
 	}
 	
-	
-	void makeEmergencyCall(){
-		System.out.print("Calling 911...");
+	public String getPassword() {
+		return password;
 	}
+	
+	public void setPassword(String pass) {
+		password = pass;	
+	}
+	
+	public void addReport(PatientReport r) {
+		myReports.add(r);
+	}
+	
+	public int getRecentUrgency() {
+		PatientReport a = new PatientReport();
+		a = myReports.get(myReports.size() - 1);
+		return a.getUrgencyLevel();
+	}
+	
 	
 }

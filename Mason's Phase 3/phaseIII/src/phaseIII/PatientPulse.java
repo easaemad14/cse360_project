@@ -30,8 +30,8 @@ public class PatientPulse {
 	private JFrame frame;
 	private JLabel nameLabel, passwordLabel, PH_label;
 	private JLabel Pnum_label, Denum_label, Nnum_label, Anum_label, Drnum_label;
-	private JTextArea username;
-	private JPasswordField passwordField;
+	private JTextArea username, passwordField;
+	//private JPasswordField passwordField;
 	private JButton QButton, LogButton, NextButton, SubmitButton, BackButton, DLButton, minus, plus;
 	private JTextArea comments, commDisplay;
 	private JScrollPane ComScroll;
@@ -42,6 +42,14 @@ public class PatientPulse {
 	private JTable msgTable, RosterTable, DocMsgTable;
 	private ButtonGroup type = new ButtonGroup();
 	static int uType = 0;
+	
+	Doctor d1 = new Doctor("Mike Te", "m");
+	Patient p1 = new Patient("Mason Denney", "m");
+	Patient p2 = new Patient("Matt Weser", "m");
+	
+	Patient currPatient;
+	
+	
 	
 
 	/**
@@ -71,6 +79,9 @@ public class PatientPulse {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		d1.addPatient(p1);
+		d1.addPatient(p2);
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
@@ -220,7 +231,11 @@ public class PatientPulse {
 		passwordLabel.setBounds(10, 58, 150, 14);
 		Logpanel_2.add(passwordLabel);
 		
-		passwordField = new JPasswordField();
+//		passwordField = new JPasswordField();
+//		passwordField.setBounds(10, 71, 199, 20);
+//		Logpanel_2.add(passwordField);
+		
+		passwordField = new JTextArea();
 		passwordField.setBounds(10, 71, 199, 20);
 		Logpanel_2.add(passwordField);
 		
@@ -278,15 +293,25 @@ public class PatientPulse {
 				
 				name = username.getText();
 				PH_label.setText(name + "'s Home");
-				password = passwordLabel.getText();
+				password = passwordField.getText();			//
 				
 // VERIFY USER AUTHENTICATION HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				
 				LogIn.setVisible(false);
 				if(uType == 0)
 				{
-					PatientHome.setVisible(true);
-					DoctorHome.setVisible(false);
+					int index = d1.findPatient(name);
+					
+					if(index == -1)
+						System.out.println("Error: Incorrect Username");
+					else
+						if(password.compareTo(d1.getPatient(index).getPassword()) == 0) {
+							currPatient = d1.getPatient(index);
+							PatientHome.setVisible(true);
+							DoctorHome.setVisible(false);
+						}
+						else
+							System.out.println("Error: Incorrect Password");
 				}
 				
 				else

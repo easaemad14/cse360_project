@@ -1,35 +1,64 @@
 package phaseIII;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Doctor {
 	String userID;
 	String password;
-	String name;
-	String officePhoneNumber;
-	String personalPhoneNumber;
-	String hospital;
-	String department;
-	ArrayList<Patient> patientList = new ArrayList<Patient>();
+	ArrayList<Patient> patientList = new ArrayList<Patient>(); // Will hold patients
 	
-	// test cmment
-	
+	// Default constructor
 	public Doctor(){
-		userID="0";
-		password="password";
-		officePhoneNumber = "555-555-5555";
-		personalPhoneNumber = "555-555-5555";
-		hospital = "Generic Hospital";
-		department = "Generic Department";
-		patientList = null;
+		userID = "0";
+		password = "password";
+		// patientList = null;
 	}
 	
-	void printPatientReport(){
-		//System.out.println("THIS IS THE REPORT");
+	//  Constructor based on input
+	public Doctor(String id, String pass){
+		userID = id;
+		password = pass;
+		// patientList = null;
 	}
 	
-	//getSymptom
+	public int findPatient(String x) {
+		int i;
+		for(i = 0; i < patientList.size(); i++) {
+			if(patientList.get(i).getUserID().compareTo(x) == 0)
+				return i;
+		}
+		return -1;
+	}
 	
-	//void patientUrgencySort(ArrayList<patient>){}
+	public void addPatient(Patient x) {
+		patientList.add(x);
+	}
+	
+	public Patient getPatient(int x) {
+		return patientList.get(x);
+	}
+	//
+	void orderPatientReport(){
+		Collections.sort(patientList, Patient.urgNum);
+	}
+	
+	public String getUserID() {
+		return userID;
+	}
+	
+	public void setUserID(String id) {
+		userID = id;
+			
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String pass) {
+		password = pass;	
+	}
+	
 	
 }
 
