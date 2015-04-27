@@ -56,14 +56,9 @@ public class Patient {
 	}
 	
 	public int getRecentUrgency() {
-		if(myReports.isEmpty() ){
-			return 0;
-		}
-		else{
-			PatientReport a = new PatientReport();
+		PatientReport a = new PatientReport();
 		a = myReports.get(myReports.size() - 1);
 		return a.getUrgencyLevel();
-		}	
 	}
 	
 	

@@ -31,7 +31,7 @@ public class PatientPulse {
 	private JLabel Pnum_label, Denum_label, Nnum_label, Anum_label, Drnum_label;
 	private JTextArea username, passwordField;
 	//private JPasswordField passwordField;
-	private JButton QButton, LogButton, NextButton, SubmitButton, BackButton, DLButton, minus, plus;
+	private JButton QButton, LogButton, NextButton, SubmitButton, BackButton, DLButton, minus, plus, pat1, pat2;
 	private JTextArea comments, commDisplay, DRcommDisplay, DisplayRate, DrDisplayRate;
 	private JScrollPane ComScroll;
 	static int num = 5;
@@ -1655,9 +1655,42 @@ public class PatientPulse {
 		InsLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		InsLabel.setBounds(0, 0, 213, 35);
 		InsPanel.add(InsLabel);
+/////////////////////////////////////////////		
+		JPanel patlistpanel = new JPanel();
+		patlistpanel.setBounds(10, 97, 213, 192);
+		RosterPanel.add(patlistpanel);
+		patlistpanel.setLayout(null);
 		
-		// Roster
+		pat1 = new JButton("Patient 1");
+		pat1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Accessing Patient1 record...");
+			}
+		});
+		//pat1.setBounds(10, 11, 193, 35);
+		patlistpanel.add(pat1);
 		
+		pat2 = new JButton("Patient 2");
+		pat2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Accessing Patient2 record...");	
+			}
+		});
+		//pat2.setBounds(10, 50, 193, 35);
+		patlistpanel.add(pat2);
+		
+		if(p1.getRecentUrgency() - p2.getRecentUrgency()>0)
+		{
+			pat1.setBounds(10, 11, 193, 35);
+			pat2.setBounds(10, 50, 193, 35);
+		}
+		
+		else
+		{
+			pat2.setBounds(10, 11, 193, 35);
+			pat1.setBounds(10, 50, 193, 35);
+		}
+///////////////////////////////		
 		QButton = new JButton("QUIT");
 		QButton.setForeground(new Color(255, 255, 255));
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
