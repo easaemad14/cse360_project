@@ -20,7 +20,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import javax.swing.JTable;
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 
@@ -33,7 +32,7 @@ public class PatientPulse {
 	private JTextArea username, passwordField;
 	//private JPasswordField passwordField;
 	private JButton QButton, LogButton, NextButton, SubmitButton, BackButton, DLButton, minus, plus;
-	private JTextArea comments, commDisplay;
+	private JTextArea comments, commDisplay, DRcommDisplay;
 	private JScrollPane ComScroll;
 	static int num = 5;
 	static int Pain, Depression, Nausea, Anxiety, Drowsiness;
@@ -166,16 +165,15 @@ public class PatientPulse {
 		DoctorHome.setLayout(null);
 		DoctorHome.setVisible(false);
 		
-		final JPanel PatientReport = new JPanel();
-		PatientReport.setBackground(Color.GRAY);
-		frame.getContentPane().add(PatientReport, "name_391281299215622");
-		PatientReport.setLayout(null);
-		PatientReport.setVisible(false);
+		final JPanel DocViewPR = new JPanel();
+		DocViewPR.setBackground(Color.GRAY);
+		frame.getContentPane().add(DocViewPR, "name_391281299215622");
+		DocViewPR.setLayout(null);
+		DocViewPR.setVisible(false);
 		
 		final JPanel DocMsgHistory = new JPanel();
 		DocMsgHistory.setBackground(Color.GRAY);
 		frame.getContentPane().add(DocMsgHistory, "name_394677836518050");
-		DocMsgHistory.setLayout(null);
 		DocMsgHistory.setLayout(null);
 		DocMsgHistory.setVisible(false);
 		
@@ -289,7 +287,6 @@ public class PatientPulse {
 		LogButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		LogButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Welcome to Patient Pulse!!" );
 				
 				name = username.getText();
 				PH_label.setText(name + "'s Home");
@@ -303,7 +300,7 @@ public class PatientPulse {
 					int index = d1.findPatient(name);
 					
 					if(index == -1)
-						System.out.println("Error: Incorrect Username");
+						JOptionPane.showMessageDialog(null, "Incorrect user name!!" );
 					else
 						if(password.compareTo(d1.getPatient(index).getPassword()) == 0) {
 							currPatient = d1.getPatient(index);
@@ -311,7 +308,7 @@ public class PatientPulse {
 							DoctorHome.setVisible(false);
 						}
 						else
-							System.out.println("Error: Incorrect Password");
+							JOptionPane.showMessageDialog(null, "Incorrect password!!" );
 				}
 				
 				else
@@ -319,6 +316,7 @@ public class PatientPulse {
 					DoctorHome.setVisible(true);
 					PatientHome.setVisible(false);
 				}
+				
 				PainSymptoms.setVisible(false);
 				DepressionSymptoms.setVisible(false);
 				NauseaSymptoms.setVisible(false);
@@ -360,7 +358,6 @@ public class PatientPulse {
 		JButton newRepButton = new JButton("<html><center>Send New<br>Pulse Report</html>");
 		newRepButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Starting New Report...");
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(true);
@@ -391,7 +388,6 @@ public class PatientPulse {
 		JButton historyButton = new JButton("<html>Report/Message<br><center>History</html>");
 		historyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Displaying History...");
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -422,7 +418,6 @@ public class PatientPulse {
 		JButton EmergencyButton = new JButton("EMERGENCY");
 		EmergencyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Accessing Emergency...");
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -449,7 +444,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				username.setText("");
 				passwordField.setText("");
@@ -558,7 +552,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				num = 5;
 				Pnum_label.setText("5");
@@ -593,10 +586,7 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Pain = num;
-				SymptomsRate = "Your Pain level is: " + Pain;
-				
-				JOptionPane.showMessageDialog(null, SymptomsRate );
-					
+			
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -673,7 +663,6 @@ public class PatientPulse {
 					Denum_label.setText("" + num);
 				};
 				Depression = num;
-				//SymptomsRate = "Your Depression level is: " + Depression;
 			}
 		});
 		minus.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -689,7 +678,6 @@ public class PatientPulse {
 					Denum_label.setText("" + num);
 				};
 				Depression = num;
-				//SymptomsRate = "Your Depression level is: " + Depression;
 			}
 		});
 		plus.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -702,7 +690,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				num = 5;
 				Denum_label.setText("5");
@@ -737,10 +724,7 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {
 								
 				Depression = num;
-				SymptomsRate = "Your Depression level is: " + Depression;
-				
-				JOptionPane.showMessageDialog(null, SymptomsRate );
-				
+			
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -842,7 +826,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				num = 5;
 				Nnum_label.setText("5");
@@ -877,10 +860,7 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {
 						
 				Nausea = num;
-				SymptomsRate = "Your Nausea level is: " + Nausea;
 				
-				JOptionPane.showMessageDialog(null, SymptomsRate );
-					
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -982,7 +962,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				num = 5;
 				Anum_label.setText("5");
@@ -1017,9 +996,6 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Anxiety = num;
-				SymptomsRate = "Your Anxiety level is: " + Anxiety;
-				
-				JOptionPane.showMessageDialog(null, SymptomsRate );
 					
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
@@ -1122,7 +1098,6 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				num = 5;
 				Drnum_label.setText("5");
@@ -1157,9 +1132,6 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Drowsiness = num;
-				SymptomsRate = "Your Drowsiness level is: " + Drowsiness;
-				
-				JOptionPane.showMessageDialog(null, SymptomsRate );
 					
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
@@ -1226,10 +1198,11 @@ public class PatientPulse {
 		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Quit without submitting your report?");
 				
 				username.setText("");
 				passwordField.setText("");
+				//comm = "";
+				//commDisplay.setText(comm);
 				
 				LogIn.setVisible(false);
 				PatientHome.setVisible(true);
@@ -1258,6 +1231,7 @@ public class PatientPulse {
 			public void actionPerformed(ActionEvent arg0) {			
 				comm = comments.getText();
 				commDisplay.setText(comm);
+				DRcommDisplay.setText(comm);
 				
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
@@ -1273,6 +1247,9 @@ public class PatientPulse {
 				
 				DoctorHome.setVisible(false);
 				DocMsgHistory.setVisible(false);
+				
+				//comm = "";
+				//commDisplay.setText(comm);
 			}
 		});
 		NextButton.setBackground(new Color(102, 0, 255));
@@ -1355,19 +1332,23 @@ public class PatientPulse {
 		CommDispScroll.setBounds(20, 26, 195, 90);
 		CommentsPanel.add(CommDispScroll);
 		
-		BackButton = new JButton("BACK");
-		BackButton.setForeground(new Color(255, 255, 255));
-		BackButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		BackButton.addActionListener(new ActionListener() {
+		QButton = new JButton("QUIT");
+		QButton.setForeground(new Color(255, 255, 255));
+		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		QButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				username.setText("");
+				passwordField.setText("");
+				
 				LogIn.setVisible(false);
-				PatientHome.setVisible(false);
+				PatientHome.setVisible(true);
 				PainSymptoms.setVisible(false);
 				DepressionSymptoms.setVisible(false);
 				NauseaSymptoms.setVisible(false);
 				AnxietySymptoms.setVisible(false);
 				DrowsinessSymptoms.setVisible(false);
-				PatientComments.setVisible(true);
+				PatientComments.setVisible(false);
 				PatientSummary.setVisible(false);
 				MsgHistory.setVisible(false);
 				Emergency.setVisible(false);
@@ -1376,9 +1357,9 @@ public class PatientPulse {
 				DocMsgHistory.setVisible(false);
 			}
 		});
-		BackButton.setBackground(new Color(102, 0, 255));
-		BackButton.setBounds(40, 393, 89, 23);
-		PatientSummary.add(BackButton);
+		QButton.setBackground(new Color(102, 0, 255));
+		QButton.setBounds(49, 393, 89, 23);
+		PatientSummary.add(QButton);
 		
 		SubmitButton = new JButton("SUBMIT");
 		SubmitButton.setForeground(new Color(255, 255, 255));
@@ -1390,8 +1371,8 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				PainSymptoms.setVisible(false);
 				DepressionSymptoms.setVisible(false);
 				NauseaSymptoms.setVisible(false);
@@ -1505,7 +1486,7 @@ public class PatientPulse {
 		QButton.setBackground(new Color(102, 0, 255));
 		QButton.setBounds(45, 393, 89, 23);
 		MsgHistory.add(QButton);
-		
+	/*	
 		DLButton = new JButton("Download All");
 		DLButton.setForeground(new Color(255, 255, 255));
 		DLButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -1533,7 +1514,7 @@ public class PatientPulse {
 		DLButton.setBackground(new Color(102, 0, 255));
 		DLButton.setBounds(171, 393, 105, 23);
 		MsgHistory.add(DLButton);
-		
+	*/	
 		//---------------------------------------------------------------------------------------------------------------------------
 		// Emergency
 		
@@ -1593,8 +1574,8 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
-				LogIn.setVisible(true);
-				PatientHome.setVisible(false);
+				LogIn.setVisible(false);
+				PatientHome.setVisible(true);
 				PainSymptoms.setVisible(false);
 				DepressionSymptoms.setVisible(false);
 				NauseaSymptoms.setVisible(false);
@@ -1690,6 +1671,112 @@ public class PatientPulse {
 				username.setText("");
 				passwordField.setText("");
 				
+				LogIn.setVisible(true);
+				PatientHome.setVisible(false);
+				PainSymptoms.setVisible(false);
+				DepressionSymptoms.setVisible(false);
+				NauseaSymptoms.setVisible(false);
+				AnxietySymptoms.setVisible(false);
+				DrowsinessSymptoms.setVisible(false);
+				PatientComments.setVisible(false);
+				PatientSummary.setVisible(false);
+				MsgHistory.setVisible(false);
+				Emergency.setVisible(false);
+				
+				DoctorHome.setVisible(false);
+				DocMsgHistory.setVisible(false);
+				DocViewPR.setVisible(false);
+			}
+		});
+		QButton.setBackground(new Color(102, 0, 255));
+		QButton.setBounds(45, 393, 89, 23);
+		DoctorHome.add(QButton);
+		
+		//---------------------------------------------------------------------------------------------------------------------------
+		// Doctor view Patient Report
+				
+		JPanel DVPRpanel = new JPanel();
+		DVPRpanel.setBackground(new Color(102, 0, 255));
+		DVPRpanel.setBounds(10, 11, 297, 52);
+		DocViewPR.add(DVPRpanel);
+		DVPRpanel.setLayout(null);
+		
+		header_label = new JLabel("New Pulse Report");
+		header_label.setForeground(new Color(255, 255, 255));
+		header_label.setFont(new Font("Tahoma", Font.BOLD, 16));
+		header_label.setHorizontalAlignment(SwingConstants.CENTER);
+		header_label.setBounds(10, 11, 277, 30);
+		DVPRpanel.add(header_label);
+		
+		JPanel DrSeverityPanel = new JPanel();
+		DrSeverityPanel.setBackground(new Color(102, 0, 255));
+		DrSeverityPanel.setBounds(40, 74, 235, 159);
+		DocViewPR.add(DrSeverityPanel);
+		DrSeverityPanel.setLayout(null);
+		
+		JPanel DrTHSymPanel = new JPanel();
+		DrTHSymPanel.setBounds(10, 11, 120, 27);
+		DrSeverityPanel.add(DrTHSymPanel);
+		DrTHSymPanel.setLayout(null);
+		
+		JLabel DrsympLabel = new JLabel("Symptom");
+		DrsympLabel.setForeground(new Color(102, 0, 255));
+		DrsympLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		DrsympLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		DrsympLabel.setBounds(0, 0, 120, 27);
+		DrTHSymPanel.add(DrsympLabel);
+		
+		JPanel DrTHSevPanel = new JPanel();
+		DrTHSevPanel.setBounds(135, 11, 90, 27);
+		DrSeverityPanel.add(DrTHSevPanel);
+		DrTHSevPanel.setLayout(null);
+		
+		JLabel DrSevLabel = new JLabel("Severity");
+		DrSevLabel.setForeground(new Color(102, 0, 255));
+		DrSevLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		DrSevLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		DrSevLabel.setBounds(0, 0, 90, 27);
+		DrTHSevPanel.add(DrSevLabel);
+		
+		JScrollPane DrSummScroll = new JScrollPane();
+		DrSummScroll.setBounds(10, 51, 215, 97);
+		DrSeverityPanel.add(DrSummScroll);
+		
+//POPULATE THIS TABLE WITH SYMPTOMS AND THEIR VALUES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		SummaryTable = new JTable();
+		SummScroll.setViewportView(SummaryTable);
+		
+		JPanel DrCommentsPanel = new JPanel();
+		DrCommentsPanel.setBackground(new Color(102, 0, 255));
+		DrCommentsPanel.setBounds(40, 244, 235, 138);
+		DocViewPR.add(DrCommentsPanel);
+		DrCommentsPanel.setLayout(null);
+		
+		comments_label = new JLabel("Comments:");
+		comments_label.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		comments_label.setForeground(new Color(255, 255, 255));
+		comments_label.setBounds(10, 11, 80, 17);
+		CommentsPanel.add(comments_label);
+		
+		DRcommDisplay = new JTextArea();
+		DRcommDisplay.setBounds(20, 26, 195, 90);
+		DRcommDisplay.setEditable(false);
+		CommentsPanel.add(DRcommDisplay);
+		
+		JScrollPane DrCommDispScroll = new JScrollPane(DRcommDisplay);
+		DrCommDispScroll.setBounds(20, 26, 195, 90);
+		DrCommentsPanel.add(DrCommDispScroll);
+		
+		QButton = new JButton("QUIT");
+		QButton.setForeground(new Color(255, 255, 255));
+		QButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		QButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				username.setText("");
+				passwordField.setText("");
+				
 				LogIn.setVisible(false);
 				PatientHome.setVisible(false);
 				PainSymptoms.setVisible(false);
@@ -1708,13 +1795,8 @@ public class PatientPulse {
 		});
 		QButton.setBackground(new Color(102, 0, 255));
 		QButton.setBounds(45, 393, 89, 23);
-		DoctorHome.add(QButton);
-		
-		//---------------------------------------------------------------------------------------------------------------------------
-		// Patient Report
-
-// THIS WILL VIEW THE SAME AS THE PATIENT SUMMARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
+		DocViewPR.add(QButton);
+/*		
 		//---------------------------------------------------------------------------------------------------------------------------
 		// Doctor's Message History
 		
@@ -1837,7 +1919,7 @@ public class PatientPulse {
 		DLButton.setBackground(new Color(102, 0, 255));
 		DLButton.setBounds(171, 393, 105, 23);
 		DocMsgHistory.add(DLButton);
-		
+*/	
 		frame.setBackground(new Color(0, 0, 0));
 		frame.setBounds(100, 100, 333, 466);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
