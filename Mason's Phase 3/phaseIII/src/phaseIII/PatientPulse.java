@@ -48,6 +48,9 @@ public class PatientPulse {
 	
 	Patient currPatient = p1;
 	
+	String p1uu = "";
+	String p2uu = "";
+	
 	
 
 	/**
@@ -317,6 +320,10 @@ public class PatientPulse {
 				{
 					DoctorHome.setVisible(true);
 					PatientHome.setVisible(false);
+					
+					p1uu = ""+p1.getRecentUrgency();
+					p2uu = ""+p2.getRecentUrgency();
+					
 				}
 				
 				PainSymptoms.setVisible(false);
@@ -1721,13 +1728,16 @@ public class PatientPulse {
 		RosterPanel.add(patlistpanel);
 		patlistpanel.setLayout(null);
 		
-		pat1 = new JButton("P1: "+p1.getUserID()+"  "+p1.getRecentUrgency());
+		pat1 = new JButton("P1: "+p1.getUserID()+"  "+p1uu);
 		pat1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Accessing Patient1 record...");
 				currPatient = p1;
 				
-				String old;
+				
+				String old="";
+				String old2="";
+				
 				int yy=0;
 				StringBuilder temp = new StringBuilder();
 				
@@ -1746,10 +1756,13 @@ public class PatientPulse {
 					recentAnx=currPatient.getReport(yy).getAnxietyLevel();
 					recentDrow=currPatient.getReport(yy).getDrowsinessLevel();
 					old = "ReportNum: "+(yy+1) +"\nPain: "+recentPain+"\nDepression: "+recentDep+"\nNausea: "+recentNausea+"\nAnxiety: "
-							+recentAnx+"\nDrowsiness: "+recentDrow+"\n\nComments:\n"+currPatient.getReport(yy).getComment();
-					temp.append(old + "\n\n");
+							+recentAnx+"\nDrowsiness: "+recentDrow+"\n\n";
+					old2 = "Comments:\n"+currPatient.getReport(yy).getComment();
+					temp.append(old+old2 + "\n\n");
 				}
-				DRcommDisplay.setText(temp.toString() );		/////////////////////
+				DrDisplayRate.setText(old );
+				DRcommDisplay.setText(old2);		
+				/////////////////////
 				
 				DoctorHome.setVisible(false);
 				DocMsgHistory.setVisible(false);
@@ -1759,13 +1772,14 @@ public class PatientPulse {
 		//pat1.setBounds(10, 11, 193, 35);
 		patlistpanel.add(pat1);
 		
-		pat2 = new JButton("P2: "+p2.getUserID()+"  "+p2.getRecentUrgency());
+		pat2 = new JButton("P2: "+p2.getUserID()+"  "+p2uu);
 		pat2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Accessing Patient2 record...");
 				currPatient = p2;
 				
-				String old;
+				String old="";
+				String old2 = "";
 				int yy=0;
 				StringBuilder temp = new StringBuilder();
 				
@@ -1784,10 +1798,14 @@ public class PatientPulse {
 					recentAnx=currPatient.getReport(yy).getAnxietyLevel();
 					recentDrow=currPatient.getReport(yy).getDrowsinessLevel();
 					old = "ReportNum: "+(yy+1) +"\nPain: "+recentPain+"\nDepression: "+recentDep+"\nNausea: "+recentNausea+"\nAnxiety: "
-							+recentAnx+"\nDrowsiness: "+recentDrow+"\n\nComments:\n"+currPatient.getReport(yy).getComment();
-					temp.append(old + "\n\n");
+							+recentAnx+"\nDrowsiness: "+recentDrow+"\n\n";
+					old2 = "Comments:\n"+currPatient.getReport(yy).getComment();
+					temp.append(old +old2+ "\n\n");
 				}
-				DRcommDisplay.setText(temp.toString() );		/////////////////////
+				DrDisplayRate.setText(old);
+				DRcommDisplay.setText(old2);		
+				/////////////////////
+				
 				
 				DoctorHome.setVisible(false);
 				DocMsgHistory.setVisible(false);
@@ -1797,6 +1815,8 @@ public class PatientPulse {
 		
 		//pat2.setBounds(10, 50, 193, 35);
 		patlistpanel.add(pat2);
+		
+		///////////////////// ORDERS PATIENTS ///////////////////////
 		
 		if(p1.getRecentUrgency() - p2.getRecentUrgency() >= 0)
 		{
@@ -1809,7 +1829,7 @@ public class PatientPulse {
 			pat2.setBounds(10, 11, 193, 35);
 			pat1.setBounds(10, 50, 193, 35);
 		}
-		//////////////// New Stuff ///////////////		
+		///////////////////////////////////////////////////////////		
 		
 		QButton = new JButton("QUIT");
 		QButton.setForeground(new Color(255, 255, 255));
@@ -1850,7 +1870,7 @@ public class PatientPulse {
 		DocViewPR.add(DVPRpanel);
 		DVPRpanel.setLayout(null);
 		
-		header_label = new JLabel("Patient's Report");
+		header_label = new JLabel("Patient's Recent Report");
 		header_label.setForeground(new Color(255, 255, 255));
 		header_label.setFont(new Font("Tahoma", Font.BOLD, 16));
 		header_label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1910,7 +1930,7 @@ public class PatientPulse {
 		DRcommDisplay = new JTextArea();
 		DRcommDisplay.setBounds(20, 26, 195, 90);
 		DRcommDisplay.setEditable(false);
-		CommentsPanel.add(DRcommDisplay);
+		DrCommentsPanel.add(DRcommDisplay);
 		
 		JScrollPane DrCommDispScroll = new JScrollPane(DRcommDisplay);
 		DrCommDispScroll.setBounds(20, 26, 195, 90);
