@@ -51,9 +51,15 @@ public class Patient {
 		password = pass;	
 	}
 	
+	
 	public void addReport(PatientReport r) {
 		myReports.add(r);
 	}
+	
+	public PatientReport getReport(int i){
+		return myReports.get(i);
+	}
+	
 	
 	public int getRecentUrgency() {
 		if(myReports.isEmpty() ){
@@ -66,5 +72,20 @@ public class Patient {
 		}	
 	}
 	
+	public PatientReport getRecentReport(){
+		if(myReports.isEmpty() ){
+			PatientReport pp = new PatientReport();
+			return pp;
+		}
+		else{
+			PatientReport a = new PatientReport();
+			a = myReports.get(myReports.size() - 1);
+			return a;
+		}
+	}
+	
+	public int getNumReports(){
+		return myReports.size();
+	}
 	
 }

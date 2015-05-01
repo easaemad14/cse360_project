@@ -48,7 +48,6 @@ public class Doctor {
 	
 	public void setUserID(String id) {
 		userID = id;
-			
 	}
 	
 	public String getPassword() {
