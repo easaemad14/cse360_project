@@ -1,6 +1,0 @@
---Doctors
-easaemad14 SuperSecretPass
-
---Patients
-pappas_fritas notfeelingwell
-mweser password123
