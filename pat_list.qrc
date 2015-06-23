@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pat_list.txt</file>
+    </qresource>
+</RCC>

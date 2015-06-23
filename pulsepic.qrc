@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ekg_heart_rate_pulse-other.jpg</file>
+    </qresource>
+</RCC>
